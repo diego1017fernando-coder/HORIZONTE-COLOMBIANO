@@ -30,6 +30,11 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -59,14 +64,19 @@
         }
 
         /* --- Header --- */
+        .menu-toggle {
+            display: none;
+        }
+
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 1rem 8%;
-            background: #ade8f4;
+            background: rgba(173, 232, 244, 0.85);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -836,7 +846,9 @@
 
             /* Hero adaptibility */
             .hero {
-                padding: 0 1.5rem;
+                min-height: 100vh;
+                height: auto;
+                padding: 120px 1.5rem 60px;
                 text-align: center;
                 justify-content: center;
             }
@@ -886,6 +898,10 @@
             #nosotros > div {
                 flex-direction: column;
                 gap: 2rem !important;
+            }
+            #nosotros > div > div {
+                min-width: 100% !important;
+                text-align: center;
             }
             #nosotros img {
                 max-width: 250px !important;
@@ -977,6 +993,17 @@
                 border-radius: 50%;
                 background: #f0faff;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+
+            /* Footer Social Links mobile styling */
+            .social {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 1.5rem !important;
+                text-align: center;
+            }
+            .social a {
+                font-size: 1rem !important;
             }
         }
 

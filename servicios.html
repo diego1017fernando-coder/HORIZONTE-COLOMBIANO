@@ -22,17 +22,27 @@
             --text-dark: #001219;
         }
 
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
         
+        .menu-toggle {
+            display: none;
+        }
+
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 1rem 8%;
-            background: #ade8f4;
+            background: rgba(173, 232, 244, 0.85);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,7 +53,14 @@
         }
 
         .logo {
+            font-size: 2.1rem;
+            color: var(--dark-jungle);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
             gap: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
 
         .logo span { color: var(--nature-green); font-weight: 400; }
@@ -233,25 +250,206 @@
             border-left: 5px solid var(--bright-cyan);
             padding-left: 10px;
         }
-            font-weight: 800;
-            color: var(--bright-cyan);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            font-weight: 500;
-            opacity: 0.9;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* --- Responsive & Mobile First Styling --- */
+        @media (max-width: 992px) {
+            header {
+                padding: 0.8rem 5%;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .logo img {
+                height: 70px !important;
+            }
+            nav ul {
+                gap: 1.5rem;
+            }
+            .hero-mini h1 {
+                font-size: 2.8rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-mini h1 { font-size: 2.5rem; }
-            nav { display: none; }
-            .stats { grid-template-columns: 1fr 1fr; padding: 30px 5%; }
-            .stat-number { font-size: 2rem; }
+            header {
+                padding: 0.8rem 1.5rem;
+            }
+            .logo {
+                font-size: 1.25rem;
+            }
+            .logo img {
+                height: 55px !important;
+            }
+            
+            /* Hamburger Menu Button */
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 21px;
+                cursor: pointer;
+                z-index: 1100;
+                order: 3;
+            }
+            .menu-toggle span {
+                display: block;
+                height: 3px;
+                width: 100%;
+                background-color: var(--dark-jungle);
+                border-radius: 3px;
+                transition: var(--transition);
+            }
+            /* Hamburger active state */
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+                background-color: var(--nature-green);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+                background-color: var(--nature-green);
+            }
+
+            /* Mobile Dropdown Menu with glassmorphism */
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(173, 232, 244, 0.98);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                box-shadow: -10px 0 30px rgba(0, 48, 73, 0.15);
+                padding: 7rem 2rem 2rem;
+                transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                z-index: 1050;
+                display: block !important;
+            }
+            nav.active {
+                right: 0;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                width: 100%;
+            }
+            nav a {
+                font-size: 1.25rem;
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            /* Mini Hero adaptibility */
+            .hero-mini {
+                height: 30vh;
+                margin-top: 55px;
+            }
+            .hero-mini h1 {
+                font-size: 2.2rem;
+            }
+
+            /* Sections sizing */
+            section {
+                padding: 50px 1.5rem;
+            }
+
+            /* Grid & Cards */
+            .grid-servicios {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            /* Statistics layout */
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                padding: 40px 1.5rem;
+                gap: 1.5rem;
+            }
+            .stat-item {
+                padding: 1rem;
+            }
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            /* Modales adaptibility */
+            .modal-content {
+                padding: 2.5rem 1.5rem 1.5rem;
+                border-radius: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+                width: 95%;
+            }
+            .modal-content h2 {
+                font-size: 1.6rem !important;
+            }
+            .modal-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .modal-item h3 {
+                font-size: 1.2rem;
+            }
+            .close-modal {
+                top: 15px;
+                right: 15px;
+                font-size: 1.8rem;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: #f0faff;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+            
+            /* Footer flexbox correction */
+            footer {
+                padding: 40px 1.5rem;
+            }
+            .social {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 1.5rem !important;
+                text-align: center;
+            }
+            .social a {
+                font-size: 1rem !important;
+            }
+            footer img {
+                height: 120px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.15rem;
+            }
+            .logo span {
+                display: none; /* Hide COLOMBIANO for better horizontal fit */
+            }
+            .logo img {
+                height: 45px !important;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            .hero-mini h1 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -271,6 +469,11 @@
                 <li><a href="index.html#mapa">Mapa</a></li>
             </ul>
         </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <div class="hero-mini">
@@ -633,7 +836,7 @@
         <div style="margin-bottom: 2rem;">
             <img src="img/logo.png" alt="Logo" style="height: 200px; width: auto;">
         </div>
-        <div style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 3rem;">
+        <div class="social" style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 3rem;">
             <a href="https://instagram.com/HorizonteColombiano_" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m4.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.2 1.2 0 0 1 1.2 1.2 1.2 1.2 0 1 1-1.2-1.2z"/></svg>
                 @HorizonteColombiano_
@@ -656,13 +859,7 @@
         <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.742 2.708 2.769-.726c.944.505 2.017.796 3.158.797l.002.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.767-5.766h-.003zm3.565 8.371c-.154.434-.891.79-1.254.846-.351.056-.71.069-1.188-.09-.312-.104-.611-.227-.852-.351-.83-.418-1.558-1.146-1.976-1.976-.124-.241-.247-.54-.351-.852-.159-.478-.146-.837-.09-1.188.056-.363.412-1.1.846-1.254.103-.037.202-.056.303-.056.101 0 .201.019.298.056.241.092.742.66.852.852.124.215.159.434.021.644-.069.103-.138.207-.207.312-.104.154-.207.312-.104.54.207.418.524.735.942.942.228.103.386.04.54-.104.105-.104.207-.207.312-.207.21-.138.43-.103.644.021.192.11.76.611.852.852.037.097.056.197.056.298 0 .101-.019.201-.056.303zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.43 22l4.3-1.13C8.21 21.65 10.04 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.72 0-3.33-.47-4.72-1.29l-.34-.2-.24.06-2.54.67.67-2.45.06-.24-.2-.34C3.87 15.33 3.4 13.72 3.4 12 3.4 7.26 7.26 3.4 12 3.4s8.6 3.86 8.6 8.6-3.86 8.6-8.6 8.6z"/></svg>
     </a>
 
-    <style>
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; opacity: 0; transition: opacity 0.4s ease; }
-        .modal.active { opacity: 1; }
-        .modal-content { background: #fff; padding: 2rem; border-radius: 20px; width: 90%; max-width: 500px; position: relative; }
-        .close-modal { position: absolute; top: 10px; right: 20px; font-size: 1.5rem; cursor: pointer; }
-        .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
-    </style>
+    <!-- Modales Responsivos -->
 
     <!-- Modal Turismo de Costa (ESTILO CORPORATIVO) -->
     <div id="costaModal" class="modal">
@@ -1376,6 +1573,37 @@
             }
         }, { threshold: 0.2 });
         statsObserver.observe(statsSection);
+
+        // Mobile Menu Interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.querySelector('nav');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when a link inside is clicked
+                const menuLinks = navMenu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking anywhere else on the document
+                document.addEventListener('click', (e) => {
+                    if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
