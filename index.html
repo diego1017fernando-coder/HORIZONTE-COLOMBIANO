@@ -733,14 +733,278 @@
             letter-spacing: 1px;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 900px) {
-            .contact-section { grid-template-columns: 1fr; padding: 2rem; margin: 0 5% 50px; }
-            .hero h1 { font-size: 2.5rem; }
-            .info-box h2 { font-size: 2.5rem; }
-            nav { display: none; }
-            .stats { padding: 40px 5%; }
-            .stat-number { font-size: 2.5rem; }
+        /* --- Responsive & Mobile First Styling --- */
+        @media (max-width: 992px) {
+            header {
+                padding: 0.8rem 5%;
+            }
+            .logo {
+                font-size: 1.6rem;
+            }
+            .logo img {
+                height: 70px !important;
+            }
+            nav ul {
+                gap: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 1.5rem;
+            }
+            .logo {
+                font-size: 1.25rem;
+            }
+            .logo img {
+                height: 55px !important;
+            }
+            
+            /* Hamburger Menu Button */
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 21px;
+                cursor: pointer;
+                z-index: 1100;
+                order: 3;
+            }
+            .menu-toggle span {
+                display: block;
+                height: 3px;
+                width: 100%;
+                background-color: var(--dark-jungle);
+                border-radius: 3px;
+                transition: var(--transition);
+            }
+            /* Hamburger active state */
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+                background-color: var(--nature-green);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+                background-color: var(--nature-green);
+            }
+
+            /* Mobile Dropdown Menu with glassmorphism */
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(173, 232, 244, 0.98);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                box-shadow: -10px 0 30px rgba(0, 48, 73, 0.15);
+                padding: 7rem 2rem 2rem;
+                transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                z-index: 1050;
+                display: block !important;
+            }
+            nav.active {
+                right: 0;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+                width: 100%;
+            }
+            nav a {
+                font-size: 1.25rem;
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+            .btn-header {
+                order: 2;
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+                margin-right: 15px;
+            }
+
+            /* Hero adaptibility */
+            .hero {
+                padding: 0 1.5rem;
+                text-align: center;
+                justify-content: center;
+            }
+            .hero-content {
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 2.6rem;
+                line-height: 1.2;
+            }
+            .hero p {
+                font-size: 1.1rem;
+                border-left: none;
+                border-bottom: 3px solid var(--bright-cyan);
+                padding-left: 0;
+                padding-bottom: 1rem;
+                margin-bottom: 2rem;
+            }
+            .btn-main {
+                padding: 1.1rem 2.5rem;
+                font-size: 1rem;
+            }
+
+            /* Sections sizing */
+            section {
+                padding: 60px 1.5rem;
+            }
+            .section-header {
+                margin-bottom: 2.5rem;
+                padding-left: 1rem;
+                border-left-width: 5px;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            /* Grid & Cards */
+            .grid-servicios {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            /* Nosotros section */
+            #nosotros > div {
+                flex-direction: column;
+                gap: 2rem !important;
+            }
+            #nosotros img {
+                max-width: 250px !important;
+                width: 60% !important;
+            }
+
+            /* Contact Form Container */
+            .contact-section {
+                grid-template-columns: 1fr;
+                padding: 2.5rem 1.5rem;
+                margin: 0 1.5rem 60px;
+                gap: 2.5rem;
+                border-radius: 25px;
+            }
+            .info-box h2 {
+                font-size: 2.2rem;
+                text-align: center;
+            }
+            .info-box p {
+                text-align: center;
+            }
+            .info-box div {
+                align-items: center;
+            }
+            .form-box {
+                padding: 2rem 1.5rem;
+                border-radius: 20px;
+            }
+
+            /* Statistics layout */
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                padding: 40px 1.5rem;
+                gap: 1.5rem;
+            }
+            .stat-item {
+                padding: 1rem;
+            }
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            /* Earth Map Box */
+            .map-trigger {
+                height: 350px;
+            }
+            .map-trigger h3 {
+                font-size: 1.6rem;
+            }
+            .cartoon-earth {
+                width: 140px;
+                height: 140px;
+            }
+            .btn-earth-reveal {
+                font-size: 1rem;
+                padding: 0.9rem 2rem;
+            }
+
+            /* Modals adaptibility */
+            .modal-content {
+                padding: 2.5rem 1.5rem 1.5rem;
+                border-radius: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+                width: 95%;
+            }
+            .modal-content h2 {
+                font-size: 1.6rem !important;
+            }
+            .modal-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .modal-item h3 {
+                font-size: 1.2rem;
+            }
+            .close-modal {
+                top: 15px;
+                right: 15px;
+                font-size: 1.8rem;
+                width: 35px;
+                height: 35px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: #f0faff;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.15rem;
+            }
+            .logo span {
+                display: none; /* Hide COLOMBIANO for better horizontal fit */
+            }
+            .logo img {
+                height: 45px !important;
+            }
+            .btn-header {
+                display: none; /* Hide to fit logo and burger smoothly on small cellphones */
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .contact-section {
+                padding: 2rem 1rem;
+            }
+            .form-box {
+                padding: 1.5rem 1rem;
+            }
         }
 
     </style>
@@ -767,6 +1031,11 @@
             </ul>
         </nav>
         <a href="#contacto" class="btn-header">Consultar</a>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
 
     <section class="hero" id="inicio">
@@ -1786,6 +2055,37 @@
             } else {
                 // Initialize UI for default selection
                 updateServiceUI(document.getElementById('asunto').value);
+            }
+        });
+
+        // Mobile Menu Interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.querySelector('nav');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    menuToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+
+                // Close menu when a link inside is clicked
+                const menuLinks = navMenu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    });
+                });
+
+                // Close menu when clicking anywhere else on the document
+                document.addEventListener('click', (e) => {
+                    if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
             }
         });
     </script>
