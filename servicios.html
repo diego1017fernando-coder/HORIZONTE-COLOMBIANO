@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Servicios | Horizonte Colombiano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003049;
+            --electric-blue: #0077b6;
+            --vibrant-blue: #0096c7;
+            --bright-cyan: #48cae4;
+            --nature-green: #2d6a4f;
+            --dark-jungle: #1b4332;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --light-bg: #f0faff;
+            --text-dark: #001219;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 8%;
+            background: #ade8f4;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 48, 73, 0.1);
+            border-bottom: 2px solid var(--nature-green);
+        }
+
+        .logo {
+            gap: 10px;
+        }
+
+        .logo span { color: var(--nature-green); font-weight: 400; }
+
+        nav ul { display: flex; list-style: none; gap: 2.5rem; }
+        nav a { text-decoration: none; color: var(--dark-jungle); font-weight: 700; font-size: 1.15rem; transition: var(--transition); }
+        nav a:hover { color: var(--nature-green); }
+
+        .hero-mini {
+            height: 40vh;
+            background: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-mini h1 { font-size: 3.5rem; font-family: 'Montserrat', sans-serif; }
+
+        section { padding: 80px 8%; }
+
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card-img { height: 220px; width: 100%; object-fit: cover; }
+        .card-body { padding: 2rem; }
+        .card-title { font-size: 1.4rem; color: var(--electric-blue); margin-bottom: 0.8rem; }
+        .card-text { font-size: 0.9rem; color: #555; margin-bottom: 1.5rem; }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background: var(--vibrant-blue);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .btn-card:hover { background: var(--electric-blue); }
+
+        footer { background: white; padding: 40px 8%; text-align: center; border-top: 1px solid #eee; margin-top: 50px; }
+
+        .btn-presentation {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--vibrant-blue), var(--electric-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 150, 199, 0.3);
+        }
+
+        .btn-presentation:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 150, 199, 0.4);
+            background: linear-gradient(135deg, var(--electric-blue), var(--primary-blue));
+        }
+        
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        /* --- Stats --- */
+        .stats {
+            background: var(--primary-blue);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            padding: 60px 8%;
+            color: white;
+            margin: 40px 0;
+            border-radius: 20px;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--bright-cyan);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* --- Modal Styles (Same as index.html) --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 48, 73, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .modal-item h3 {
+            color: var(--electric-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            border-left: 5px solid var(--bright-cyan);
+            padding-left: 10px;
+        }
+            font-weight: 800;
+            color: var(--bright-cyan);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-mini h1 { font-size: 2.5rem; }
+            nav { display: none; }
+            .stats { grid-template-columns: 1fr 1fr; padding: 30px 5%; }
+            .stat-number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <img src="img/logo.png" alt="Logo" style="height: 110px; width: auto;">
+            HORIZONTE <span>COLOMBIANO</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li><a href="index.html#mapa">Mapa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-mini">
+        <h1>Portafolio Completo</h1>
+    </div>
+
+    <section>
+        <div class="grid-servicios">
+            <!-- 0. Personalizado -->
+            <div class="card" style="border: 2px solid var(--bright-cyan);">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1935&auto=format&fit=crop" class="card-img" alt="Personalizado">
+                <div class="card-body">
+                    <h3 class="card-title">✨ Viaje Personalizado</h3>
+                    <p class="card-text">Diseñamos itinerarios exclusivos basados en tus gustos, presupuesto y tiempos.</p>
+                    <a href="index.html?servicio=Viaje%20Personalizado#contacto" class="btn-card" style="background: var(--primary-blue);">Diseñar Mi Viaje</a>
+                </div>
+            </div>
+
+            <!-- 1. Caribe -->
+            <div class="card">
+                <img src="img/caribe.png" class="card-img" alt="Caribe">
+                <div class="card-body">
+                    <h3 class="card-title">Turismo de Costa</h3>
+
+                    <p class="card-text">Playas cristalinas y resorts de lujo en el Caribe Colombiano.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Turismo%20de%20Costa#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('costaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Cafe -->
+            <div class="card">
+                <img src="img/cafe.png" class="card-img" alt="Cafe">
+                <div class="card-body">
+                    <h3 class="card-title">Ruta del Interior</h3>
+
+                    <p class="card-text">Experiencia cafetera y pueblos coloridos en el corazón de Colombia.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Ruta%20del%20Interior#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('rutaInteriorModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Amazon -->
+            <div class="card">
+                <img src="img/Amazonas%20Profundo.png" class="card-img" alt="Amazonas">
+                <div class="card-body">
+                    <h3 class="card-title">Amazonas Profundo</h3>
+
+                    <p class="card-text">Aventura en la selva más grande del mundo con guías nativos.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Amazonas%20Profundo#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('amazonasModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Tatacoa -->
+            <div class="card">
+                <img src="img/Desierto%20Tatacoa.png" class="card-img" alt="Tatacoa">
+                <div class="card-body">
+                    <h3 class="card-title">Desierto Tatacoa</h3>
+
+                    <p class="card-text">Observación astronómica y senderismo en paisajes rojos y grises.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Desierto%20Tatacoa#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('tatacoaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Caño Cristales -->
+            <div class="card">
+                <img src="img/Caño Cristales.jpg" class="card-img" alt="Caño Cristales">
+                <div class="card-body">
+                    <h3 class="card-title">Caño Cristales</h3>
+                    <p class="card-text">El río de los siete colores, una maravilla natural única en el mundo.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Caño%20Cristales#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('canoCristalesModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. San Agustin -->
+            <div class="card">
+                <img src="img/Misterio Arqueológico.jpg" class="card-img" alt="San Agustin">
+                <div class="card-body">
+                    <h3 class="card-title">Misterio Arqueológico</h3>
+                    <p class="card-text">Explora las estatuas precolombinas en San Agustín y Huila.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Misterio%20Arqueológico#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('misterioModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Medellin -->
+            <div class="card">
+                <img src="img/City Tour Medellín.jpg" class="card-img" alt="Medellin">
+                <div class="card-body">
+                    <h3 class="card-title">City Tour Medellín</h3>
+                    <p class="card-text">Cultura, innovación y la eterna primavera en la ciudad más moderna.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=City%20Tour%20Medellín#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('medellinModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Guatape -->
+            <div class="card">
+                <img src="img/Peñol y Guatapé.jpg" class="card-img" alt="Guatape">
+                <div class="card-body">
+                    <h3 class="card-title">Peñol y Guatapé</h3>
+                    <p class="card-text">Sube la piedra del Peñol y disfruta del embalse más bello.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Peñol%20y%20Guatapé#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('guatapeModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Ballenas -->
+            <div class="card">
+                <img src="img/Avistamiento Ballenas.jpg" class="card-img" alt="Ballenas">
+                <div class="card-body">
+                    <h3 class="card-title">Avistamiento Ballenas</h3>
+
+                    <p class="card-text">Sé testigo de la migración de ballenas jorobadas en el Pacífico.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Avistamiento%20Ballenas#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('whaleModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Ciudad Perdida -->
+            <div class="card">
+                <img src="img/Trekking%20Ciudad%20Perdida.jpg" class="card-img" alt="Ciudad Perdida">
+                <div class="card-body">
+                    <h3 class="card-title">Trekking Ciudad Perdida</h3>
+
+                    <p class="card-text">Caminata épica a través de la Sierra Nevada hasta ruinas antiguas.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Trekking%20Ciudad%20Perdida#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('trekkingModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Zipaquira -->
+            <div class="card">
+                <img src="img/Catedral%20de%20Sal.jpg" class="card-img" alt="Zipaquira">
+                <div class="card-body">
+                    <h3 class="card-title">Catedral de Sal</h3>
+
+                    <p class="card-text">Arquitectura subterránea única en Zipaquira, cerca de Bogotá.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Catedral%20de%20Sal#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('catedralSalModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. San Gil -->
+            <div class="card">
+                <img src="img/Rafting San Gil.jpg" class="card-img" alt="San Gil">
+                <div class="card-body">
+                    <h3 class="card-title">Rafting San Gil</h3>
+
+                    <p class="card-text">Deportes extremos y aventura en la capital del turismo de aventura.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Rafting%20San%20Gil#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('raftingModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13. Cabo Vela -->
+            <div class="card">
+                <img src="img/Cabo%20de%20la%20Vela.jpg" class="card-img" alt="Cabo Vela">
+                <div class="card-body">
+                    <h3 class="card-title">Cabo de la Vela</h3>
+
+                    <p class="card-text">Donde el desierto se encuentra con el mar en la Guajira.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Cabo%20de%20la%20Vela#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('caboVelaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 14. Tayrona -->
+            <div class="card">
+                <img src="img/Parque Tayrona.jpg" class="card-img" alt="Tayrona">
+                <div class="card-body">
+                    <h3 class="card-title">Parque Tayrona</h3>
+
+                    <p class="card-text">Senderismo y playas paradisíacas en la base de la Sierra Nevada.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Parque%20Tayrona#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('tayronaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 15. Cali Salsa -->
+            <div class="card">
+                <img src="img/Salsa%20en%20Cali.jpg" class="card-img" alt="Cali">
+                <div class="card-body">
+                    <h3 class="card-title">Salsa en Cali</h3>
+
+                    <p class="card-text">Aprende los pasos prohibidos en la capital mundial de la salsa.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Salsa%20en%20Cali#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('salsaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 16. Villa Leyva -->
+            <div class="card">
+                <img src="img/Villa de Leyva.jpg" class="card-img" alt="Villa de Leyva">
+                <div class="card-body">
+                    <h3 class="card-title">Villa de Leyva</h3>
+
+                    <p class="card-text">Historia colonial y calles de piedra en un pueblo con encanto.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Villa%20de%20Leyva#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('villaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 17. Gorgona -->
+            <div class="card">
+                <img src="img/Buceo%20en%20Gorgona.jpg" class="card-img" alt="Gorgona">
+                <div class="card-body">
+                    <h3 class="card-title">Buceo en Gorgona</h3>
+
+                    <p class="card-text">Explora la vida marina en la antigua isla prisión ahora parque nacional.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Buceo%20en%20Gorgona#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('gorgonaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 18. Sierra Nevada -->
+            <div class="card">
+                <img src="img/Sierra%20Nevada.jpg" class="card-img" alt="Sierra Nevada">
+                <div class="card-body">
+                    <h3 class="card-title">Sierra Nevada</h3>
+
+                    <p class="card-text">Conexión espiritual y naturaleza en la montaña más alta junto al mar.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Sierra%20Nevada#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('sierraModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 19. Chicamocha -->
+            <div class="card">
+                <img src="img/Cañón%20Chicamocha.jpg" class="card-img" alt="Chicamocha">
+                <div class="card-body">
+                    <h3 class="card-title">Cañón Chicamocha</h3>
+                    <p class="card-text">Vistas impresionantes y parapente en uno de los cañones más grandes.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Cañón%20Chicamocha#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('chicamochaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 20. Popayan -->
+            <div class="card">
+                <img src="img/Popayán%20Blanca.jpg" class="card-img" alt="Popayan">
+                <div class="card-body">
+                    <h3 class="card-title">Popayán Blanca</h3>
+                    <p class="card-text">Cuna de presidentes y capital gastronómica de Colombia.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Popayán%20Blanca#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('popayanModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 21. Mompox -->
+            <div class="card">
+                <img src="img/Mompox%20Colonial.jpg" class="card-img" alt="Mompox">
+                <div class="card-body">
+                    <h3 class="card-title">Mompox Colonial</h3>
+
+                    <p class="card-text">Tiempo detenido a orillas del río Magdalena con orfebrería de lujo.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Mompox%20Colonial#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('mompoxModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 22. Leticia -->
+            <div class="card">
+                <img src="img/Tres%20Fronteras.jpg" class="card-img" alt="Leticia">
+                <div class="card-body">
+                    <h3 class="card-title">Tres Fronteras</h3>
+
+                    <p class="card-text">Leticia, el punto donde convergen Colombia, Brasil y Perú.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Tres%20Fronteras#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('tresFronterasModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 23. Fauna -->
+            <div class="card">
+                <img src="img/Ecoturismo Fauna.jpg" class="card-img" alt="Fauna">
+                <div class="card-body">
+                    <h3 class="card-title">Ecoturismo Fauna</h3>
+
+                    <p class="card-text">Avistamiento de aves y especies endémicas en santuarios protegidos.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="index.html?servicio=Ecoturismo%20Fauna#contacto" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</a>
+                        <button onclick="toggleModal('faunaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section style="padding-top: 0;">
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" data-target="5240">0</span>
+                <p class="stat-label">Viajeros Felices</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="28">0</span>
+                <p class="stat-label">Destinos Únicos</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="12">0</span>
+                <p class="stat-label">Años de Trayectoria</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="45">0</span>
+                <p class="stat-label">Guías Certificados</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 2rem;">
+            <img src="img/logo.png" alt="Logo" style="height: 200px; width: auto;">
+        </div>
+        <div style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 3rem;">
+            <a href="https://instagram.com/HorizonteColombiano_" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m4.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.2 1.2 0 0 1 1.2 1.2 1.2 1.2 0 1 1-1.2-1.2z"/></svg>
+                @HorizonteColombiano_
+            </a>
+            <a href="https://facebook.com/HorizonteColombianoOficial" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54v-2.21c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg>
+                facebook.com/HorizonteColombianoOficial
+            </a>
+            <a href="https://wa.me/573005293916" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.742 2.708 2.769-.726c.944.505 2.017.796 3.158.797l.002.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.767-5.766h-.003zm3.565 8.371c-.154.434-.891.79-1.254.846-.351.056-.71.069-1.188-.09-.312-.104-.611-.227-.852-.351-.83-.418-1.558-1.146-1.976-1.976-.124-.241-.247-.54-.351-.852-.159-.478-.146-.837-.09-1.188.056-.363.412-1.1.846-1.254.103-.037.202-.056.303-.056.101 0 .201.019.298.056.241.092.742.66.852.852.124.215.159.434.021.644-.069.103-.138.207-.207.312-.104.154-.207.312-.104.54.207.418.524.735.942.942.228.103.386.04.54-.104.105-.104.207-.207.312-.207.21-.138.43-.103.644.021.192.11.76.611.852.852.037.097.056.197.056.298 0 .101-.019.201-.056.303zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.43 22l4.3-1.13C8.21 21.65 10.04 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.72 0-3.33-.47-4.72-1.29l-.34-.2-.24.06-2.54.67.67-2.45.06-.24-.2-.34C3.87 15.33 3.4 13.72 3.4 12 3.4 7.26 7.26 3.4 12 3.4s8.6 3.86 8.6 8.6-3.86 8.6-8.6 8.6z"/></svg>
+                300 529 3916
+            </a>
+        </div>
+        <p style="margin-bottom: 1.5rem; color: var(--electric-blue); font-weight: 600; font-size: 0.9rem;">📍 Medellín, Colombia | Cra 36 #10-45, El Poblado</p>
+        <a href="Archibo/HorizonteColombiano.pdf" target="_blank" class="btn-presentation">PRESENTACIÓN</a>
+        <p>&copy; 2024 Horizonte Colombiano. Todos los derechos reservados. Diseñado por Diego Galvis.</p>
+    </footer>
+
+    <a href="https://wa.me/573005293916" class="wa-float" target="_blank">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.742 2.708 2.769-.726c.944.505 2.017.796 3.158.797l.002.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.767-5.766h-.003zm3.565 8.371c-.154.434-.891.79-1.254.846-.351.056-.71.069-1.188-.09-.312-.104-.611-.227-.852-.351-.83-.418-1.558-1.146-1.976-1.976-.124-.241-.247-.54-.351-.852-.159-.478-.146-.837-.09-1.188.056-.363.412-1.1.846-1.254.103-.037.202-.056.303-.056.101 0 .201.019.298.056.241.092.742.66.852.852.124.215.159.434.021.644-.069.103-.138.207-.207.312-.104.154-.207.312-.104.54.207.418.524.735.942.942.228.103.386.04.54-.104.105-.104.207-.207.312-.207.21-.138.43-.103.644.021.192.11.76.611.852.852.037.097.056.197.056.298 0 .101-.019.201-.056.303zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.43 22l4.3-1.13C8.21 21.65 10.04 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.72 0-3.33-.47-4.72-1.29l-.34-.2-.24.06-2.54.67.67-2.45.06-.24-.2-.34C3.87 15.33 3.4 13.72 3.4 12 3.4 7.26 7.26 3.4 12 3.4s8.6 3.86 8.6 8.6-3.86 8.6-8.6 8.6z"/></svg>
+    </a>
+
+    <style>
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; opacity: 0; transition: opacity 0.4s ease; }
+        .modal.active { opacity: 1; }
+        .modal-content { background: #fff; padding: 2rem; border-radius: 20px; width: 90%; max-width: 500px; position: relative; }
+        .close-modal { position: absolute; top: 10px; right: 20px; font-size: 1.5rem; cursor: pointer; }
+        .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    </style>
+
+    <!-- Modal Turismo de Costa (ESTILO CORPORATIVO) -->
+    <div id="costaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('costaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Destino de Playa</p>
+                <h2 style="font-size: 2rem;">Turismo de Costa</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Disfruta de las mejores playas del Caribe Colombiano. Desde Cartagena hasta Santa Marta, vive la magia de las ciudades costeras con su brisa marina, historia colonial y fina arena blanca.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Relájate en resorts de lujo frente al mar, deléitate con la gastronomía costera, recorre pintorescos centros históricos y disfruta de exclusivos tours en yate por islas paradisíacas.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Turismo de Costa.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Turismo de Costa" onerror="this.src='img/caribe.png'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ruta del Interior (ESTILO CORPORATIVO) -->
+    <div id="rutaInteriorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('rutaInteriorModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Cultura y Tradición</p>
+                <h2 style="font-size: 2rem;">Ruta del Interior</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Adéntrate en el paisaje cultural cafetero, recorre haciendas tradicionales, pueblos coloridos como Salento y descubre el imponente Valle de Cocora con sus palmas de cera gigantes.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Degusta el café más suave del mundo directo desde su origen, disfruta de la amabilidad de la gente andina y explora montañas llenas de historia y biodiversidad sin igual.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Ruta del Interior.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Ruta del Interior" onerror="this.src='img/cafe.png'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Amazonas Profundo (ESTILO CORPORATIVO) -->
+    <div id="amazonasModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('amazonasModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Naturaleza Salvaje</p>
+                <h2 style="font-size: 2rem;">Amazonas Profundo</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Pulmón del Mundo</h3>
+                    <p style="font-size: 0.9rem;">Adéntrate en la selva amazónica, navega por el río más caudaloso del planeta y descubre una biodiversidad incomparable en su estado más puro y salvaje.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Interactúa con comunidades indígenas autóctonas, avista delfines rosados, realiza caminatas nocturnas en la selva y duerme bajo un manto de estrellas en reservas ecológicas.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Amazonas Profundo1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Amazonas Profundo" onerror="this.src='img/Amazonas Profundo.png'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Desierto Tatacoa (ESTILO CORPORATIVO) -->
+    <div id="tatacoaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('tatacoaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Magia Geológica</p>
+                <h2 style="font-size: 2rem;">Desierto Tatacoa</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Paisaje</h3>
+                    <p style="font-size: 0.9rem;">Recorre la segunda zona árida más grande de Colombia, un bosque tropical seco que te sorprenderá con sus laberintos de tierra roja en Cuzco y sus cráteres de arena gris en Los Hoyos.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Disfruta de caminatas ecológicas, relájate en piscinas minerales naturales en medio del desierto y maravíllate con una observación astronómica inigualable bajo cielos despejados.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Desierto Tatacoa1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Desierto Tatacoa" onerror="this.src='img/Desierto Tatacoa.png'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sierra Nevada (ESTILO CORPORATIVO) -->
+    <div id="sierraModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('sierraModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Naturaleza Mística</p>
+                <h2 style="font-size: 2rem;">Sierra Nevada</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Montaña Sagrada</h3>
+                    <p style="font-size: 0.9rem;">Explora la montaña costera más alta del mundo, un ecosistema único que alberga selvas, bosques nublados y picos nevados a pocos kilómetros del mar Caribe.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Conecta con la sabiduría ancestral de las comunidades indígenas, maravíllate con el avistamiento de aves endémicas y recorre senderos llenos de paz y energía espiritual.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Sierra Nevada1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Sierra Nevada" onerror="this.src='img/Sierra Nevada.jpg'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cañón Chicamocha (ESTILO CORPORATIVO) -->
+    <div id="chicamochaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('chicamochaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Aventura Extrema</p>
+                <h2 style="font-size: 2rem;">Cañón Chicamocha</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Paisaje</h3>
+                    <p style="font-size: 0.9rem;">Descubre uno de los cañones más imponentes y majestuosos del mundo, ubicado en el corazón de Santander. Un escenario natural que te dejará sin aliento con su inmensidad.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Cruza el cañón en el teleférico, vuela en parapente para disfrutar de una vista panorámica inigualable o visita el Parque Nacional del Chicamocha para conocer la cultura santandereana.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Cañón Chicamocha1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Cañón Chicamocha" onerror="this.src='img/Cañón Chicamocha.jpg'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popayán Blanca (ESTILO CORPORATIVO) -->
+    <div id="popayanModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('popayanModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Ciudad Colonial</p>
+                <h2 style="font-size: 2rem;">Popayán Blanca</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Jerusalén de América</h3>
+                    <p style="font-size: 0.9rem;">Recorre las majestuosas calles empedradas y fachadas blancas de una de las ciudades coloniales más antiguas y mejor conservadas de América, cuna de próceres y presidentes.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Gastronomía y Cultura</h3>
+                    <p style="font-size: 0.9rem;">Declarada Ciudad Gastronómica por la UNESCO, aquí podrás deleitarte con platillos únicos como el pipián. Disfruta además de su fervor cultural y sus imponentes iglesias.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Popayán Blanca1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Popayán Blanca" onerror="this.src='img/Popayán Blanca.jpg'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Mompox Colonial (ESTILO CORPORATIVO) -->
+    <div id="mompoxModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('mompoxModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Joya del Magdalena</p>
+                <h2 style="font-size: 2rem;">Mompox Colonial</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Tiempo Detenido</h3>
+                    <p style="font-size: 0.9rem;">Visita este mágico pueblo Patrimonio de la Humanidad, una isla en medio del río Magdalena donde el tiempo parece haberse detenido entre sus calles y su hermosa arquitectura colonial.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Cultura y Tradición</h3>
+                    <p style="font-size: 0.9rem;">Maravíllate con el delicado arte de la orfebrería en filigrana, navega por la Ciénaga de Pijiño al atardecer y vive el encanto de sus festivales de jazz y música tradicional.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Mompox Colonial1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Mompox Colonial" onerror="this.src='img/Mompox Colonial.jpg'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Villa de Leyva (ESTILO CORPORATIVO) -->
+    <div id="villaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('villaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Destino Destacado</p>
+                <h2 style="font-size: 2rem;">Villa de Leyva</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Viaja en el tiempo en la plaza empedrada más grande de Colombia. Un oasis de historia colonial, museos paleontológicos y una arquitectura blanca impecable.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Disfruta de viñedos boutique, festivales de cometas, el centro de investigaciones paleontológicas y caminatas por los Pozos Azules.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Villa de Leyva 1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Villa de Leyva">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ecoturismo Fauna (ESTILO CORPORATIVO) -->
+    <div id="faunaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('faunaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Biodiversidad Única</p>
+                <h2 style="font-size: 2rem;">Ecoturismo Fauna</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Colombia es el país más biodiverso del mundo por metro cuadrado. Explora santuarios protegidos y reservas donde habitan especies únicas.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Realiza avistamiento de aves endémicas y fotografía de vida silvestre guiados por expertos, contribuyendo a la conservación.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Ecoturismo Fauna1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Ecoturismo Fauna" onerror="this.src='img/Ecoturismo Fauna.jpg'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ballenas (ESTILO CORPORATIVO) -->
+    <div id="whaleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('whaleModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Destino de Temporada</p>
+                <h2 style="font-size: 2rem;">Avistamiento Ballenas</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Espectáculo</h3>
+                    <p style="font-size: 0.9rem;">Vive la majestuosidad de las ballenas jorobadas en las cálidas aguas del Pacífico colombiano. Un milagro de la naturaleza que ocurre cada año.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Ubicaciones</h3>
+                    <p style="font-size: 0.9rem;">Disfruta de este encuentro en Bahía Solano, Nuquí o la Isla Gorgona, lugares privilegiados para observar saltos y cantos de estos gigantes.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Avistamiento Ballenas1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Avistamiento Ballenas">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Tayrona (ESTILO CORPORATIVO) -->
+    <div id="tayronaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('tayronaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Naturaleza Pura</p>
+                <h2 style="font-size: 2rem;">Parque Tayrona</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Donde la selva se encuentra con el mar Caribe. Playas de arena blanca, aguas cristalinas y la energía ancestral de la Sierra Nevada de Santa Marta.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Aventuras</h3>
+                    <p style="font-size: 0.9rem;">Camina por senderos tropicales hasta Cabo San Juan, descubre arrecifes coralinos y relájate en hamacas bajo las estrellas.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Parque Tayrona1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Parque Tayrona">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Guatapé (ESTILO CORPORATIVO) -->
+    <div id="guatapeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('guatapeModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Color y Tradición</p>
+                <h2 style="font-size: 2rem;">Peñol y Guatapé</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Peñol</h3>
+                    <p style="font-size: 0.9rem;">Sube los 740 escalones de la Piedra del Peñol para contemplar una de las vistas más espectaculares del mundo: un embalse de aguas color esmeralda.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Guatapé</h3>
+                    <p style="font-size: 0.9rem;">Recorre el "Pueblo de los Zócalos", famoso por sus calles vibrantes, casas coloridas y una arquitectura que cuenta historias en cada fachada.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Peñol y Guatapé1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Peñol y Guatapé">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Caño Cristales (ESTILO CORPORATIVO) -->
+    <div id="canoCristalesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('canoCristalesModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Maravilla del Mundo</p>
+                <h2 style="font-size: 2rem;">Caño Cristales</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Siete Colores</h3>
+                    <p style="font-size: 0.9rem;">Conocido como el "río más hermoso del mundo", este paraíso en la Sierra de la Macarena deslumbra con sus plantas acuáticas rojas, amarillas, verdes y azules.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencia</h3>
+                    <p style="font-size: 0.9rem;">Una inmersión total en la naturaleza protegida, donde podrás nadar en pozas cristalinas y maravillarte con cascadas ocultas en la selva.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Caño Cristales1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Caño Cristales">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Misterio Arqueológico (ESTILO CORPORATIVO) -->
+    <div id="misterioModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('misterioModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Cultura Ancestral</p>
+                <h2 style="font-size: 2rem;">Misterio Arqueológico</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>San Agustín</h3>
+                    <p style="font-size: 0.9rem;">Descubre el mayor conjunto de monumentos religiosos y esculturas megalíticas de Sudamérica. Un viaje al corazón de una civilización perdida.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Patrimonio</h3>
+                    <p style="font-size: 0.9rem;">Explora el Parque Arqueológico de San Agustín, Patrimonio de la Humanidad, y déjate sorprender por el misticismo de sus figuras de piedra.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Misterio Arqueológico1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Misterio Arqueológico">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Medellín (ESTILO CORPORATIVO) -->
+    <div id="medellinModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('medellinModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Innovación y Cultura</p>
+                <h2 style="font-size: 2rem;">City Tour Medellín</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Transformación</h3>
+                    <p style="font-size: 0.9rem;">Recorre la ciudad de la "Eterna Primavera". Desde la Comuna 13 hasta el Museo de Antioquia, vive la resiliencia y alegría de los paisas.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Puntos Clave</h3>
+                    <p style="font-size: 0.9rem;">Visita el Pueblito Paisa, el Parque de las Luces y deslízate en el Metrocable para tener una vista inigualable de todo el valle.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/City Tour Medellín1.png" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="City Tour Medellín">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Rafting San Gil (ESTILO CORPORATIVO) -->
+    <div id="raftingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('raftingModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Adrenalina Pura</p>
+                <h2 style="font-size: 2rem;">Rafting San Gil</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p style="font-size: 0.9rem;">Desafía los rápidos del Río Fonce o el imponente Río Chicamocha. Una experiencia de aventura extrema con los más altos estándares de seguridad y guías certificados.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>San Gil</h3>
+                    <p style="font-size: 0.9rem;">Conocida como la capital turística de Santander, ofrece también parapente, espeleología y torrentismo en un entorno natural espectacular.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Rafting San Gil1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Rafting San Gil">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Trekking Ciudad Perdida (ESTILO CORPORATIVO) -->
+    <div id="trekkingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('trekkingModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Aventura Ancestral</p>
+                <h2 style="font-size: 2rem;">Ciudad Perdida</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Trekking</h3>
+                    <p style="font-size: 0.9rem;">Embárcate en una expedición de 4 o 5 días por la selva tropical de la Sierra Nevada de Santa Marta hasta Teyuna, el corazón de la civilización Tayrona.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Naturaleza y Cultura</h3>
+                    <p style="font-size: 0.9rem;">Cruza ríos, conoce comunidades indígenas Wiwa y Kogui, y maravíllate con la biodiversidad única de la montaña costera más alta del mundo.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Trekking Ciudad Perdida1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Trekking Ciudad Perdida">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cabo de la Vela (ESTILO CORPORATIVO) -->
+    <div id="caboVelaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('caboVelaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Magia en el Desierto</p>
+                <h2 style="font-size: 2rem;">Cabo de la Vela</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Descubre el paraíso donde el desierto de la Guajira abraza el Mar Caribe. Un lugar sagrado para la comunidad Wayuu con paisajes de ensueño y puestas de sol inigualables.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p style="font-size: 0.9rem;">Visita el Pilón de Azúcar, el Faro y las playas de arena dorada. Disfruta de la cultura local, artesanías en mambe y la tranquilidad absoluta frente al océano.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Cabo de la Vela1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Cabo de la Vela">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Catedral de Sal (ESTILO CORPORATIVO) -->
+    <div id="catedralSalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('catedralSalModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Arquitectura Subterránea</p>
+                <h2 style="font-size: 2rem;">Catedral de Sal</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Monumento</h3>
+                    <p style="font-size: 0.9rem;">Visita la Primera Maravilla de Colombia en Zipaquirá. Una majestuosa catedral construida en las entrañas de una mina de sal, a 180 metros bajo tierra.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p style="font-size: 0.9rem;">Recorre el Vía Crucis, maravíllate con la cruz tallada en roca de sal más grande del mundo y disfruta de un espectáculo de luces y sonido único en el planeta.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Catedral de Sal1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Catedral de Sal">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Buceo en Gorgona (ESTILO CORPORATIVO) -->
+    <div id="gorgonaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('gorgonaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Paraíso Subacuático</p>
+                <h2 style="font-size: 2rem;">Buceo en Gorgona</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Isla</h3>
+                    <p style="font-size: 0.9rem;">Antigua prisión de máxima seguridad, hoy un Parque Nacional Natural santuario de biodiversidad. Un laboratorio viviente en medio del Pacífico colombiano.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Inmersión Total</h3>
+                    <p style="font-size: 0.9rem;">Sumérgete con tiburones aletiblancos, tortugas marinas, morenas y una explosión de vida coralina. Entre julio y octubre, el buceo se acompaña del canto de las ballenas jorobadas.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Buceo en Gorgona1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Buceo en Gorgona">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Salsa en Cali (ESTILO CORPORATIVO) -->
+    <div id="salsaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('salsaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Ritmo y Sabor</p>
+                <h2 style="font-size: 2rem;">Salsa en Cali</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Capital Mundial</h3>
+                    <p style="font-size: 0.9rem;">Cali es salsa, alegría y sabor. Vive la cultura de la capital mundial de la salsa a través de sus escuelas, orquestas y los mejores bailarines del mundo.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p style="font-size: 0.9rem;">Aprende los "pasos prohibidos" con instructores campeones mundiales, visita los bares de salsa más emblemáticos y déjate contagiar por la energía del Valle del Cauca.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Salsa en Cali1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Salsa en Cali">
+            </div>
+        </div>
+    </div>
+    <!-- Modal Tres Fronteras (ESTILO CORPORATIVO) -->
+    <div id="tresFronterasModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('tresFronterasModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 60px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <p>Naturaleza Sin Fronteras</p>
+                <h2 style="font-size: 2rem;">Tres Fronteras</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p style="font-size: 0.9rem;">Leticia, el punto mágico donde convergen Colombia, Brasil y Perú en medio de la inmensidad del Amazonas. Una fusión cultural y natural única en el mundo.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p style="font-size: 0.9rem;">Navega por el río Amazonas, visita la Isla de los Micos, descubre la victoria regia y vive el intercambio cultural de tres naciones en un solo lugar.</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <img src="img/Tres Fronteras1.jpg" style="width: 100%; border-radius: 15px; height: 180px; object-fit: cover;" alt="Tres Fronteras">
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Image Viewer Modal -->
+    <div id="imageViewerModal" class="modal" onclick="closeImageViewer()" style="z-index: 3000;">
+        <span class="close-modal" style="color: white; right: 30px; top: 30px; font-size: 3rem;">&times;</span>
+        <img id="fullImage" src="" style="width: 90vw; height: 90vh; border-radius: 10px; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+    </div>
+
+    <script>
+        // Modal Logic
+        function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (show) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('active');
+                setTimeout(() => modal.style.display = 'none', 400);
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Image Viewer Logic
+        function openImageViewer(src) {
+            const viewer = document.getElementById('imageViewerModal');
+            document.getElementById('fullImage').src = src;
+            viewer.style.display = 'flex';
+            setTimeout(() => viewer.classList.add('active'), 10);
+        }
+        function closeImageViewer() {
+            const viewer = document.getElementById('imageViewerModal');
+            viewer.classList.remove('active');
+            setTimeout(() => viewer.style.display = 'none', 400);
+        }
+
+        // Make modal images expandable
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.modal-content img').forEach(img => {
+                    if (!img.alt.includes('Logo') && img.id !== 'fullImage') {
+                        img.style.cursor = 'pointer';
+                        img.title = 'Haz clic para expandir';
+                        img.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            openImageViewer(this.src);
+                        });
+                    }
+                });
+            }, 500); // Wait for DOM
+        });
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                if (event.target.id === 'imageViewerModal') {
+                    closeImageViewer();
+                } else {
+                    toggleModal(event.target.id, false);
+                }
+            }
+        };
+
+        // Counter Animation Logic
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = Math.ceil(target / speed);
+
+                    if (count < target) {
+                        counter.innerText = count + inc;
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + (target > 1000 ? '+' : '');
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger counters when section is visible
+        const statsSection = document.querySelector('.stats');
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                startCounters();
+                statsObserver.unobserve(statsSection);
+            }
+        }, { threshold: 0.2 });
+        statsObserver.observe(statsSection);
+    </script>
+</body>
+</html>
+

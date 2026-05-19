@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizonte Colombiano | Hotelería & Turismo Profesional</title>
+    <meta name="description" content="Servicios de hotelería y turismo corporativo y vacacional en Colombia. Experiencias azules y naturales.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003049;
+            --electric-blue: #0077b6;
+            --vibrant-blue: #0096c7;
+            --bright-cyan: #48cae4;
+            --nature-green: #2d6a4f;
+            --dark-jungle: #1b4332;
+            --white: #ffffff;
+            --light-bg: #f0faff;
+            --text-dark: #001219;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 8%;
+            background: #ade8f4;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 48, 73, 0.1);
+            border-bottom: 2px solid var(--nature-green);
+        }
+
+        /* Redundant since header is always solid now */
+        header.scrolled {
+            padding: 0.8rem 8%;
+        }
+
+        .logo {
+            font-size: 2.1rem;
+            color: var(--dark-jungle);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--nature-green);
+            font-weight: 400;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-jungle);
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--nature-green);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--electric-blue);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-header {
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(135deg, var(--electric-blue), var(--vibrant-blue));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+        }
+
+        .btn-header:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 119, 182, 0.4);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 48, 73, 0.7), rgba(0, 150, 199, 0.5)), url('img/caribe.png') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 span {
+            color: var(--bright-cyan);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 1;
+            border-left: 4px solid var(--bright-cyan);
+            padding-left: 1.5rem;
+        }
+
+        .btn-main {
+            padding: 1.4rem 3.5rem;
+            background: var(--bright-cyan);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-main:hover {
+            background: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 100px 8%;
+        }        .section-header {
+            margin-bottom: 4rem;
+            border-left: 8px solid var(--bright-cyan);
+            padding-left: 2rem;
+        }
+
+        .section-header p {
+            color: var(--electric-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+
+        /* --- Servicios --- */
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 180, 216, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: var(--bright-cyan);
+            box-shadow: 0 20px 45px rgba(0, 180, 216, 0.2);
+        }
+
+        .card-img {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 2.5rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--electric-blue);
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-card {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            text-align: center;
+            background: var(--vibrant-blue);
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-card:hover {
+            background: var(--bright-cyan);
+            color: var(--primary-blue);
+            transform: scale(1.02);
+        }
+
+        /* --- Formulario --- */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            border-radius: 40px;
+            padding: 5rem;
+            margin: 0 8% 100px;
+            box-shadow: 0 30px 60px rgba(0, 18, 25, 0.3);
+        }
+
+        .info-box h2 { font-size: 4.5rem; color: white; margin-bottom: 1.5rem; }
+
+        .form-box {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            color: var(--text-dark);
+        }
+
+        .form-group { margin-bottom: 2rem; }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #f0faff;
+            background: #f8fbff;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--bright-cyan);
+            background: white;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: rgba(0, 48, 73, 0.8);
+            cursor: pointer;
+        }
+
+        .form-check input {
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1.4rem;
+            background: var(--electric-blue);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 119, 182, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: var(--bright-cyan);
+            color: var(--primary-blue);
+            transform: scale(1.02);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: white;
+            padding: 50px 8%;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-presentation {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--vibrant-blue), var(--electric-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 150, 199, 0.3);
+        }
+
+        .btn-presentation:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 150, 199, 0.4);
+            background: linear-gradient(135deg, var(--electric-blue), var(--primary-blue));
+        }
+
+        .social {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social a { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+
+        /* Float WA */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        /* --- Mapa Planeta Tierra Amigable --- */
+        .map-wrapper {
+            position: relative;
+            border-radius: 50px;
+            overflow: hidden;
+            background: transparent;
+            border: 6px solid transparent;
+            box-shadow: none;
+            transition: all 0.8s ease;
+        }
+
+        .map-wrapper.active {
+            background: white;
+            border-color: #0077b6;
+            box-shadow: 0 25px 60px rgba(0, 119, 182, 0.2);
+        }
+
+        .map-trigger {
+            width: 100%;
+            height: 480px;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        /* Personaje de la Tierra */
+        .cartoon-earth {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            animation: earthFloat 4s infinite ease-in-out;
+        }
+
+        .earth-sphere {
+            width: 100%;
+            height: 100%;
+            background: #00b4d8;
+            border: 6px solid #003049;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.1), 10px 10px 0 rgba(0, 48, 73, 0.05);
+        }
+
+        .earth-land {
+            background: #4ade80;
+            border: 3px solid #003049;
+            border-radius: 20px;
+            position: absolute;
+        }
+
+        .land-1 { width: 80px; height: 50px; top: 20px; left: -10px; transform: rotate(15deg); }
+        .land-2 { width: 60px; height: 80px; bottom: 10px; right: -10px; transform: rotate(-20deg); }
+        .land-3 { width: 40px; height: 30px; top: 50px; right: 20px; }
+
+        .earth-face {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 60px;
+            z-index: 10;
+        }
+
+        .earth-eye {
+            width: 22px;
+            height: 22px;
+            background: #003049;
+            border-radius: 50%;
+            position: absolute;
+            animation: earthBlink 4s infinite;
+        }
+
+        .earth-eye.left { left: 10px; }
+        .earth-eye.right { right: 10px; }
+
+        .earth-eye::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+
+        .earth-smile {
+            width: 40px;
+            height: 20px;
+            border-bottom: 6px solid #003049;
+            border-radius: 0 0 30px 30px;
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Pin Gigante de Ubicación */
+        .earth-pin-big {
+            width: 60px;
+            height: 60px;
+            background: #f44336;
+            border: 5px solid #003049;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: absolute;
+            top: -40px;
+            right: 0;
+            z-index: 20;
+            animation: earthPinJump 1.5s infinite alternate ease-in-out;
+            box-shadow: 0 15px 25px rgba(244, 67, 54, 0.4);
+        }
+
+        .earth-pin-big::after {
+            content: '';
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 14px;
+            left: 14px;
+        }
+
+        @keyframes earthFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes earthBlink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+
+        @keyframes earthPinJump {
+            from { transform: rotate(-45deg) translateY(0); }
+            to { transform: rotate(-45deg) translateY(-20px); }
+        }
+
+        .map-trigger h3 {
+            margin-top: 2rem;
+            color: #003049;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .btn-earth-reveal {
+            margin-top: 1.5rem;
+            padding: 1.2rem 3.5rem;
+            background: #f44336;
+            color: white;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(244, 67, 54, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .map-trigger:hover .btn-earth-reveal {
+            transform: scale(1.1) rotate(-2deg);
+            background: #d32f2f;
+        }
+
+        #google-map-container {
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        #google-map-container.active {
+            max-height: 600px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Modal --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 48, 73, 0.9);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--bright-cyan);
+            transform: rotate(90deg);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .modal-item h3 {
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-left: 6px solid var(--bright-cyan);
+            padding-left: 15px;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--electric-blue);
+            color: var(--electric-blue);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--electric-blue);
+            color: white;
+        }
+
+        /* --- Stats --- */
+        .stats {
+            background: var(--primary-blue);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            padding: 80px 8%;
+            color: white;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--bright-cyan);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .contact-section { grid-template-columns: 1fr; padding: 2rem; margin: 0 5% 50px; }
+            .hero h1 { font-size: 2.5rem; }
+            .info-box h2 { font-size: 2.5rem; }
+            nav { display: none; }
+            .stats { padding: 40px 5%; }
+            .stat-number { font-size: 2.5rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/573005293916" class="wa-float" target="_blank">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.742 2.708 2.769-.726c.944.505 2.017.796 3.158.797l.002.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.767-5.766h-.003zm3.565 8.371c-.154.434-.891.79-1.254.846-.351.056-.71.069-1.188-.09-.312-.104-.611-.227-.852-.351-.83-.418-1.558-1.146-1.976-1.976-.124-.241-.247-.54-.351-.852-.159-.478-.146-.837-.09-1.188.056-.363.412-1.1.846-1.254.103-.037.202-.056.303-.056.101 0 .201.019.298.056.241.092.742.66.852.852.124.215.159.434.021.644-.069.103-.138.207-.207.312-.104.154-.207.312-.104.54.207.418.524.735.942.942.228.103.386.04.54-.104.105-.104.207-.207.312-.207.21-.138.43-.103.644.021.192.11.76.611.852.852.037.097.056.197.056.298 0 .101-.019.201-.056.303zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.43 22l4.3-1.13C8.21 21.65 10.04 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.72 0-3.33-.47-4.72-1.29l-.34-.2-.24.06-2.54.67.67-2.45.06-.24-.2-.34C3.87 15.33 3.4 13.72 3.4 12 3.4 7.26 7.26 3.4 12 3.4s8.6 3.86 8.6 8.6-3.86 8.6-8.6 8.6z"/></svg>
+    </a>
+
+    <header id="header">
+        <a href="#" class="logo">
+            <img src="img/logo.png" alt="Horizonte Colombiano Logo" style="height: 110px; width: auto;">
+            HORIZONTE <span>COLOMBIANO</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#mapa">Mapa</a></li>
+            </ul>
+        </nav>
+        <a href="#contacto" class="btn-header">Consultar</a>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content reveal">
+            <h1>Expertos en Destinos de Colombia</h1>
+            <p>Brindamos soluciones integrales de hotelería y turismo con un enfoque profesional, seguro y sostenible.</p>
+            <a href="#servicios" class="btn-main">Nuestros Servicios</a>
+        </div>
+    </section>
+
+    <section id="eventos">
+        <div class="section-header reveal">
+            <p>Agenda 2026</p>
+            <h2>Próximos Eventos</h2>
+        </div>
+        <div class="grid-servicios reveal">
+            <!-- Evento 1 -->
+            <div class="card">
+                <img src="img/Feria de las Flores.jpg" alt="Feria de las Flores de Medellín" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1602923588921-657abf3c0b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                <div class="card-body">
+                    <h3 class="card-title">Feria de las Flores</h3>
+                    <p style="color: var(--nature-green); font-weight: bold; margin-bottom: 0.5rem;">📅 Agosto, 2026 | 📍 Medellín</p>
+                    <p class="card-text">Vive la fiesta más emblemática de Antioquia, llena de color, desfile de silleteros, conciertos y la mejor cultura paisa.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="selectPlan('Feria de las Flores 2026')" class="btn-card" style="flex: 1; text-align: center; cursor: pointer;">Cotizar</button>
+                        <button onclick="toggleModal('floresModal', true)" class="btn-card" style="flex: 1; background: var(--white); color: var(--electric-blue); border: 2px solid var(--electric-blue); cursor: pointer;">Info</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Evento 2 -->
+            <div class="card">
+                <img src="img/El Regreso de BTS.jpg" alt="El regreso de BTS" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1540039155732-6114a1a5b82f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                <div class="card-body">
+                    <h3 class="card-title">El Regreso de BTS</h3>
+                    <p style="color: var(--nature-green); font-weight: bold; margin-bottom: 0.5rem;">📅 Noviembre, 2026 | 📍 Bogotá</p>
+                    <p class="card-text">No te pierdas el histórico regreso a los escenarios de la mítica banda de K-Pop mundial en su esperada gira 2026.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="selectPlan('El Regreso de BTS 2026')" class="btn-card" style="flex: 1; text-align: center; cursor: pointer;">Cotizar</button>
+                        <button onclick="toggleModal('btsModal', true)" class="btn-card" style="flex: 1; background: var(--white); color: var(--electric-blue); border: 2px solid var(--electric-blue); cursor: pointer;">Info</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Evento 3 -->
+            <div class="card">
+                <img src="img/Feria de Cali.jpg" alt="Feria de Cali" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1533174000255-14fdb2dcab39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                <div class="card-body">
+                    <h3 class="card-title">Feria de Cali</h3>
+                    <p style="color: var(--nature-green); font-weight: bold; margin-bottom: 0.5rem;">📅 25 - 30 de Dic, 2026 | 📍 Cali</p>
+                    <p class="card-text">La capital mundial de la salsa se viste de fiesta con el Salsódromo, conciertos, tascas y toda la alegría del Pacífico colombiano.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="selectPlan('Feria de Cali 2026')" class="btn-card" style="flex: 1; text-align: center; cursor: pointer;">Cotizar</button>
+                        <button onclick="toggleModal('caliModal', true)" class="btn-card" style="flex: 1; background: var(--white); color: var(--electric-blue); border: 2px solid var(--electric-blue); cursor: pointer;">Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros">
+        <div class="section-header reveal">
+            <p>Nuestra Empresa</p>
+            <h2>Liderazgo en Gestión Turística</h2>
+        </div>
+        <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; align-items: center;" class="reveal">
+                <img src="img/logo.png" style="width: 80%; max-width: 400px; height: auto;" alt="Logo Horizonte Colombiano">
+            </div>
+            <div style="flex: 1; min-width: 300px;" class="reveal">
+                <p style="font-size: 1.1rem; color: #555;">
+                    Horizonte Colombiano es una firma dedicada a la excelencia en el sector de la hospitalidad. Nos especializamos en conectar a nuestros clientes con la biodiversidad del país a través de una gestión eficiente y altos estándares de calidad.
+                </p>
+                <ul style="margin-top: 2rem; list-style: none;">
+                    <li style="margin-bottom: 1rem;">✅ Atención Personalizada</li>
+                    <li style="margin-bottom: 1rem;">✅ Cobertura Nacional</li>
+                    <li style="margin-bottom: 1rem;">✅ Compromiso Ambiental</li>
+                </ul>
+                <button class="btn-outline" onclick="toggleModal('missionModal', true)">Quienes Somos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Feria de las Flores (ESTILO CORPORATIVO) -->
+    <div id="floresModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('floresModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Plan Exclusivo 2026</p>
+                <h2 style="text-align: left; margin: 0;">Feria de las Flores</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Servicios Incluidos</h3>
+                    <p>Hospedaje de lujo por los días del evento (4-5 estrellas). Transporte VIP privado aeropuerto-hotel y traslados a todos los eventos y recorridos turísticos.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias y Más</h3>
+                    <p>Entradas preferenciales al Desfile de Silleteros, accesos a conciertos principales, tour a fincas en Santa Elena, seguro médico y asistencia 24/7.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Feria de las Flores1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Feria de las Flores Detalles" onerror="this.src='https://images.unsplash.com/photo-1602923588921-657abf3c0b0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal El Regreso de BTS (ESTILO CORPORATIVO) -->
+    <div id="btsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('btsModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Evento Destacado 2026</p>
+                <h2 style="text-align: left; margin: 0;">El Regreso de BTS</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Servicios Incluidos</h3>
+                    <p>Hospedaje de lujo (4-5 estrellas) en Bogotá. Incluye transporte VIP privado aeropuerto-hotel y traslados seguros de ida y vuelta al Estadio El Campín el día del concierto.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Duración y Entradas</h3>
+                    <p>Paquetes disponibles desde 3 días y 2 noches. Garantizamos entradas oficiales en zonas exclusivas (VIP/Platino), merch oficial del evento, seguro y asistencia 24/7.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/El Regreso de BTS1.jpg" style="width: 100%; border-radius: 15px; max-height: 400px; object-fit: contain;" alt="El Regreso de BTS Detalles" onerror="this.src='https://images.unsplash.com/photo-1540039155732-6114a1a5b82f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Feria de Cali (ESTILO CORPORATIVO) -->
+    <div id="caliModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('caliModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Evento Destacado 2026</p>
+                <h2 style="text-align: left; margin: 0;">Feria de Cali</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Servicios Incluidos</h3>
+                    <p>Hospedaje de lujo (4-5 estrellas) en el corazón de Cali por 6 días y 5 noches. Incluye transporte VIP privado para traslados desde/hacia el aeropuerto y a todos los eventos oficiales.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias Exclusivas</h3>
+                    <p>Accesos VIP al Salsódromo, Súper Concierto y tascas tradicionales. Disfruta de la mejor gastronomía vallecaucana con asistencia 24/7 y seguro de viaje incluido.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Feria de Cali1.jpg" style="width: 100%; border-radius: 15px; max-height: 400px; object-fit: contain;" alt="Feria de Cali Detalles" onerror="this.src='https://images.unsplash.com/photo-1533174000255-14fdb2dcab39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Misión/Visión -->
+    <div id="missionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('missionModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--bright-cyan); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Identidad Corporativa</p>
+                <h2 style="text-align: left; margin: 0;">Horizonte Colombiano</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Misión</h3>
+                    <p>Brindar experiencias turísticas y de hospitalidad excepcionales en Colombia, promoviendo el desarrollo sostenible y resaltando la riqueza cultural y natural de nuestras regiones a través de servicios de alta calidad.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos en 2030 como la firma líder en gestión de turismo de naturaleza y corporativo en Colombia, destacándonos por nuestra innovación, seguridad y compromiso inquebrantable con el medio ambiente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Villa de Leyva (ESTILO CORPORATIVO) -->
+    <div id="villaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('villaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Destino Destacado</p>
+                <h2 style="text-align: left; margin: 0;">Villa de Leyva</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p>Viaja en el tiempo en la plaza empedrada más grande de Colombia. Un oasis de historia colonial, museos paleontológicos y una arquitectura blanca que te dejará sin aliento.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p>Disfruta de viñedos boutique, festivales de cometas, el centro de investigaciones paleontológicas y caminatas por los Pozos Azules en un entorno natural único.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Villa de Leyva 1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Villa de Leyva">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ecoturismo Fauna (ESTILO CORPORATIVO) -->
+    <div id="faunaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('faunaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Biodiversidad Única</p>
+                <h2 style="text-align: left; margin: 0;">Ecoturismo Fauna</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p>Colombia es el país más biodiverso del mundo por metro cuadrado. Explora santuarios protegidos y reservas naturales donde habitan especies únicas en su hábitat natural.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p>Realiza avistamiento de aves endémicas, fotografía de vida silvestre y safaris ecológicos guiados por expertos, contribuyendo a la conservación y el turismo sostenible.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Ecoturismo Fauna1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Ecoturismo Fauna">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ballenas (ESTILO CORPORATIVO) -->
+    <div id="whaleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('whaleModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--vibrant-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Destino de Temporada</p>
+                <h2 style="text-align: left; margin: 0;">Avistamiento Ballenas</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Espectáculo</h3>
+                    <p>Vive la majestuosidad de las ballenas jorobadas en las cálidas aguas del Pacífico colombiano. Un milagro de la naturaleza que ocurre cada año entre julio y octubre.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Ubicaciones</h3>
+                    <p>Disfruta de este encuentro en Bahía Solano, Nuquí o la Isla Gorgona, lugares privilegiados para observar saltos y cantos de estos gigantes del océano.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Avistamiento Ballenas1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Avistamiento Ballenas">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Tayrona (ESTILO CORPORATIVO) -->
+    <div id="tayronaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('tayronaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--striking-cyan); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Naturaleza Pura</p>
+                <h2 style="text-align: left; margin: 0;">Parque Tayrona</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p>Donde la selva se encuentra con el mar Caribe. Playas de arena blanca, aguas cristalinas y la energía ancestral de la Sierra Nevada de Santa Marta.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Aventuras</h3>
+                    <p>Camina por senderos tropicales hasta Cabo San Juan, descubre arrecifes coralinos y relájate en hamacas bajo las estrellas.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Parque Tayrona1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Parque Tayrona">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Guatapé (ESTILO CORPORATIVO) -->
+    <div id="guatapeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('guatapeModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--vibrant-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Color y Tradición</p>
+                <h2 style="text-align: left; margin: 0;">Peñol y Guatapé</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Peñol</h3>
+                    <p>Sube los 740 escalones de la Piedra del Peñol para contemplar una de las vistas más espectaculares del mundo: un embalse de aguas color esmeralda que rodea cientos de islas.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Guatapé</h3>
+                    <p>Recorre el "Pueblo de los Zócalos", famoso por sus calles vibrantes, casas coloridas y una arquitectura que cuenta historias en cada fachada de sus pintorescas calles.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Peñol y Guatapé1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Peñol y Guatapé">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Caño Cristales (ESTILO CORPORATIVO) -->
+    <div id="canoCristalesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('canoCristalesModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Maravilla del Mundo</p>
+                <h2 style="text-align: left; margin: 0;">Caño Cristales</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>Siete Colores</h3>
+                    <p>Conocido como el "río más hermoso del mundo", este paraíso en la Sierra de la Macarena deslumbra con sus plantas acuáticas rojas, amarillas, verdes y azules que crean un arcoíris bajo el agua.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencia</h3>
+                    <p>Una inmersión total en la naturaleza protegida de la Amazonía-Orinoquía, donde podrás nadar en pozas cristalinas y maravillarte con cascadas ocultas en la selva virgen.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Caño Cristales1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Caño Cristales">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Misterio Arqueológico (ESTILO CORPORATIVO) -->
+    <div id="misterioModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('misterioModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--electric-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Cultura Ancestral</p>
+                <h2 style="text-align: left; margin: 0;">Misterio Arqueológico</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>San Agustín</h3>
+                    <p>Descubre el mayor conjunto de monumentos religiosos y esculturas megalíticas de Sudamérica. Un viaje al corazón de una civilización perdida que dejó su huella en piedra.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Patrimonio</h3>
+                    <p>Explora el Parque Arqueológico de San Agustín, Patrimonio de la Humanidad, y déjate sorprender por el misticismo de sus figuras de piedra en un entorno natural único.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Misterio Arqueológico1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Misterio Arqueológico">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Medellín (ESTILO CORPORATIVO) -->
+    <div id="medellinModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('medellinModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--vibrant-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Innovación y Cultura</p>
+                <h2 style="text-align: left; margin: 0;">City Tour Medellín</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Transformación</h3>
+                    <p>Recorre la ciudad de la "Eterna Primavera". Desde la Comuna 13 hasta el Museo de Antioquia, vive la resiliencia y alegría de los paisas en una ciudad que mira al futuro.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Puntos Clave</h3>
+                    <p>Visita el Pueblito Paisa, el Parque de las Luces y deslízate en el Metrocable para tener una vista inigualable de todo el valle de Aburrá.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/City Tour Medellín1.png" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="City Tour Medellín">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Rafting San Gil (ESTILO CORPORATIVO) -->
+    <div id="raftingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('raftingModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Adrenalina Pura</p>
+                <h2 style="text-align: left; margin: 0;">Rafting San Gil</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p>Desafía los rápidos del Río Fonce o el imponente Río Chicamocha. Una experiencia de aventura extrema con los más altos estándares de seguridad y guías certificados.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>San Gil</h3>
+                    <p>Conocida como la capital turística de Santander, ofrece también parapente, espeleología y torrentismo en un entorno natural espectacular.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Rafting San Gil1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Rafting San Gil">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Trekking Ciudad Perdida (ESTILO CORPORATIVO) -->
+    <div id="trekkingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('trekkingModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--vibrant-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Aventura Ancestral</p>
+                <h2 style="text-align: left; margin: 0;">Ciudad Perdida</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Trekking</h3>
+                    <p>Embárcate en una expedición de 4 o 5 días por la selva tropical de la Sierra Nevada de Santa Marta hasta Teyuna, el corazón de la civilización Tayrona.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Naturaleza y Cultura</h3>
+                    <p>Cruza ríos, conoce comunidades indígenas Wiwa y Kogui, y maravíllate con la biodiversidad única de la montaña costera más alta del mundo.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Trekking Ciudad Perdida1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Trekking Ciudad Perdida">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cabo de la Vela (ESTILO CORPORATIVO) -->
+    <div id="caboVelaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('caboVelaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Magia en el Desierto</p>
+                <h2 style="text-align: left; margin: 0;">Cabo de la Vela</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Destino</h3>
+                    <p>Descubre el paraíso donde el desierto de la Guajira abraza el Mar Caribe. Un lugar sagrado para la comunidad Wayuu con paisajes de ensueño y puestas de sol inigualables.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Experiencias</h3>
+                    <p>Visita el Pilón de Azúcar, el Faro y las playas de arena dorada. Disfruta de la cultura local, artesanías en mambe y la tranquilidad absoluta frente al océano.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Cabo de la Vela1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Cabo de la Vela">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Catedral de Sal (ESTILO CORPORATIVO) -->
+    <div id="catedralSalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('catedralSalModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--electric-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Arquitectura Subterránea</p>
+                <h2 style="text-align: left; margin: 0;">Catedral de Sal</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>El Monumento</h3>
+                    <p>Visita la Primera Maravilla de Colombia en Zipaquirá. Una majestuosa catedral construida en las entrañas de una mina de sal, a 180 metros bajo tierra.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p>Recorre el Vía Crucis, maravíllate con la cruz tallada en roca de sal más grande del mundo y disfruta de un espectáculo de luces y sonido único en el planeta.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Catedral de Sal1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Catedral de Sal">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Buceo en Gorgona (ESTILO CORPORATIVO) -->
+    <div id="gorgonaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('gorgonaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--vibrant-blue); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Paraíso Subacuático</p>
+                <h2 style="text-align: left; margin: 0;">Buceo en Gorgona</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Isla</h3>
+                    <p>Antigua prisión de máxima seguridad, hoy un Parque Nacional Natural santuario de biodiversidad. Un laboratorio viviente en medio del Pacífico colombiano.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>Inmersión Total</h3>
+                    <p>Sumérgete con tiburones aletiblancos, tortugas marinas, morenas y una explosión de vida coralina. Entre julio y octubre, el buceo se acompaña del canto de las ballenas jorobadas.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Buceo en Gorgona1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Buceo en Gorgona">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Salsa en Cali (ESTILO CORPORATIVO) -->
+    <div id="salsaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal('salsaModal', false)">&times;</span>
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="img/logo.png" alt="Logo" style="height: 120px; width: auto;">
+            </div>
+            <div class="section-header" style="margin-bottom: 2rem; border-left: 8px solid var(--nature-green); padding-left: 20px; text-align: left;">
+                <p style="text-align: left; margin: 0;">Ritmo y Sabor</p>
+                <h2 style="text-align: left; margin: 0;">Salsa en Cali</h2>
+            </div>
+            <div class="modal-grid">
+                <div class="modal-item">
+                    <h3>La Capital Mundial</h3>
+                    <p>Cali es salsa, alegría y sabor. Vive la cultura de la capital mundial de la salsa a través de sus escuelas, orquestas y los mejores bailarines del mundo.</p>
+                </div>
+                <div class="modal-item">
+                    <h3>La Experiencia</h3>
+                    <p>Aprende los "pasos prohibidos" con instructores campeones mundiales, visita los bares de salsa más emblemáticos y déjate contagiar por la energía del Valle del Cauca.</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <img src="img/Salsa en Cali1.jpg" style="width: 100%; border-radius: 15px; height: 200px; object-fit: cover;" alt="Salsa en Cali">
+            </div>
+        </div>
+    </div>
+
+    <section class="stats reveal">
+        <div class="stat-item">
+            <span class="stat-number" data-target="5240">0</span>
+            <p class="stat-label">Viajeros Felices</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="28">0</span>
+            <p class="stat-label">Destinos Únicos</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="12">0</span>
+            <p class="stat-label">Años de Trayectoria</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="45">0</span>
+            <p class="stat-label">Guías Certificados</p>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <div class="section-header reveal">
+            <p>Portafolio</p>
+            <h2>Servicios Especializados</h2>
+        </div>
+        <div class="grid-servicios">
+            <!-- Servicio 1 -->
+            <div class="card reveal">
+                <img src="img/caribe.png" class="card-img" alt="Caribe Colombiano">
+                <div class="card-body">
+                    <h3 class="card-title">Turismo de Costa</h3>
+
+                    <p class="card-text">Gestión de alojamientos y tours en las principales ciudades del Caribe Colombiano.</p>
+                    <button onclick="selectPlan('Turismo de Costa')" class="btn-card">Solicitar Cotización</button>
+                </div>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="card reveal">
+                <img src="img/cafe.png" class="card-img" alt="Eje Cafetero">
+                <div class="card-body">
+                    <h3 class="card-title">Ruta del Interior</h3>
+
+                    <p class="card-text">Experiencias culturales y de naturaleza en la región Andina y el Eje Cafetero.</p>
+                    <button onclick="selectPlan('Ruta del Interior')" class="btn-card">Solicitar Cotización</button>
+                </div>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="card reveal">
+                <img src="img/Ecoturismo Fauna.jpg" class="card-img" alt="Ecoturismo Fauna">
+                <div class="card-body">
+                    <h3 class="card-title">Ecoturismo Fauna</h3>
+
+                    <p class="card-text">Avistamiento de aves y especies endémicas con guías especializados en biodiversidad.</p>
+                    <div style="display: flex; gap: 10px;">
+                        <button onclick="selectPlan('Ecoturismo Fauna')" class="btn-card" style="flex: 1; padding: 0.8rem;">Cotizar</button>
+                        <button onclick="toggleModal('faunaModal', true)" class="btn-card" style="flex: 1; padding: 0.8rem;">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 4 - Personalizado -->
+            <div class="card reveal">
+                <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1935&auto=format&fit=crop" class="card-img" alt="Viaje Personalizado">
+                <div class="card-body">
+                    <h3 class="card-title">Viaje Personalizado</h3>
+
+                    <p class="card-text">Diseñamos la experiencia de tus sueños a medida. Tú pones el destino, nosotros la magia.</p>
+                    <button onclick="selectPlan('Viaje Personalizado')" class="btn-card">Diseñar Mi Viaje</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="servicios.html" class="btn-main" style="padding: 1.2rem 3rem;">Explorar Todos los Destinos</a>
+        </div>
+    </section>
+
+
+    <div class="contact-section reveal" id="contacto">
+        <div class="info-box reveal">
+            <h2>Conéctate con Nosotros</h2>
+            <p>Estamos listos para diseñar tu próxima gran aventura en Colombia. Contáctanos por cualquiera de nuestros canales oficiales.</p>
+            <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                <a href="https://wa.me/573005293916" target="_blank" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 500;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.742 2.708 2.769-.726c.944.505 2.017.796 3.158.797l.002.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.767-5.766h-.003zm3.565 8.371c-.154.434-.891.79-1.254.846-.351.056-.71.069-1.188-.09-.312-.104-.611-.227-.852-.351-.83-.418-1.558-1.146-1.976-1.976-.124-.241-.247-.54-.351-.852-.159-.478-.146-.837-.09-1.188.056-.363.412-1.1.846-1.254.103-.037.202-.056.303-.056.101 0 .201.019.298.056.241.092.742.66.852.852.124.215.159.434.021.644-.069.103-.138.207-.207.312-.104.154-.207.312-.104.54.207.418.524.735.942.942.228.103.386.04.54-.104.105-.104.207-.207.312-.207.21-.138.43-.103.644.021.192.11.76.611.852.852.037.097.056.197.056.298 0 .101-.019.201-.056.303zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.43 22l4.3-1.13C8.21 21.65 10.04 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.72 0-3.33-.47-4.72-1.29l-.34-.2-.24.06-2.54.67.67-2.45.06-.24-.2-.34C3.87 15.33 3.4 13.72 3.4 12 3.4 7.26 7.26 3.4 12 3.4s8.6 3.86 8.6 8.6-3.86 8.6-8.6 8.6z"/></svg>
+                    WhatsApp: +57 300 529 3916
+                </a>
+                <a href="https://instagram.com/HorizonteColombiano_" target="_blank" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 500;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m4.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.2 1.2 0 0 1 1.2 1.2 1.2 1.2 0 1 1-1.2-1.2z"/></svg>
+                    Instagram: @HorizonteColombiano_
+                </a>
+                <a href="https://facebook.com/HorizonteColombianoOficial" target="_blank" style="color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-weight: 500;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54v-2.21c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg>
+                    Facebook: Horizonte Colombiano
+                </a>
+                <p style="margin-top: 0.5rem; display: flex; align-items: center; gap: 10px;">
+                    📧 contacto@horizontecolombiano.com.co
+                </p>
+                <p style="display: flex; align-items: center; gap: 10px;">
+                    📍 Medellín, Colombia
+                </p>
+            </div>
+        </div>
+        <div class="form-box">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+57 ..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Asunto / Servicio</label>
+                    <select id="asunto" name="asunto" class="form-input" required>
+                        <option value="" selected>Seleccione una opción</option>
+                        <option value="Feria de las Flores 2026">✨ Feria de las Flores 2026</option>
+                        <option value="El Regreso de BTS 2026">✨ El Regreso de BTS 2026</option>
+                        <option value="Feria de Cali 2026">✨ Feria de Cali 2026</option>
+                        <option value="Viaje Personalizado">✨ Viaje Personalizado (A medida)</option>
+                        <option value="Turismo de Costa">Turismo de Costa</option>
+                        <option value="Ruta del Interior">Ruta del Interior</option>
+                        <option value="Ecoturismo Fauna">Ecoturismo Fauna</option>
+                        <option value="Amazonas Profundo">Amazonas Profundo</option>
+                        <option value="Desierto Tatacoa">Desierto Tatacoa</option>
+                        <option value="Caño Cristales">Caño Cristales</option>
+                        <option value="Misterio Arqueológico">Misterio Arqueológico</option>
+                        <option value="City Tour Medellín">City Tour Medellín</option>
+                        <option value="Peñol y Guatapé">Peñol y Guatapé</option>
+                        <option value="Avistamiento Ballenas">Avistamiento Ballenas</option>
+                        <option value="Trekking Ciudad Perdida">Trekking Ciudad Perdida</option>
+                        <option value="Catedral de Sal">Catedral de Sal</option>
+                        <option value="Rafting San Gil">Rafting San Gil</option>
+                        <option value="Cabo de la Vela">Cabo de la Vela</option>
+                        <option value="Parque Tayrona">Parque Tayrona</option>
+                        <option value="Salsa en Cali">Salsa en Cali</option>
+                        <option value="Villa de Leyva">Villa de Leyva</option>
+                        <option value="Buceo en Gorgona">Buceo en Gorgona</option>
+                        <option value="Sierra Nevada">Sierra Nevada</option>
+                        <option value="Cañón Chicamocha">Cañón Chicamocha</option>
+                        <option value="Popayán Blanca">Popayán Blanca</option>
+                        <option value="Mompox Colonial">Mompox Colonial</option>
+                        <option value="Tres Fronteras">Tres Fronteras</option>
+                        <option value="Consulta General">Consulta General</option>
+                    </select>
+                </div>
+
+                <div id="custom-trip-options" style="display: none; background: #f0faff; padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem; border: 1px solid var(--striking-cyan);">
+                    <label class="form-label">¿Cómo imaginas tu viaje?</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <label class="form-check"><input type="checkbox" name="tipo_viaje" value="Aventura"> Aventura</label>
+                        <label class="form-check"><input type="checkbox" name="tipo_viaje" value="Lujo"> Lujo</label>
+                        <label class="form-check"><input type="checkbox" name="tipo_viaje" value="Relajación"> Relax</label>
+                        <label class="form-check"><input type="checkbox" name="tipo_viaje" value="Familiar"> Familiar</label>
+                        <label class="form-check"><input type="checkbox" name="tipo_viaje" value="Romántico"> Romántico</label>
+                        <label class="form-check"><input type="checkbox" name="tipo_viaje" value="Cultural"> Cultural</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" class="form-input" style="height: 100px; resize: none;" required></textarea>
+                </div>
+                <label class="form-check">
+                    <input type="checkbox" required>
+                    <span>Acepto el tratamiento de mis datos personales de acuerdo con la política de privacidad y la Ley de Habeas Data de Horizonte Colombiano.</span>
+                </label>
+                <input type="hidden" id="detalles_hidden" name="detalles">
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+    
+    <section id="mapa" class="reveal" style="padding: 0 8% 100px;">
+        <div class="section-header">
+            <p>Ubicación Estratégica</p>
+            <h2>Nuestra Sede en Medellín</h2>
+        </div>
+        <div class="map-wrapper">
+            <div id="map-trigger" class="map-trigger" onclick="deployMap()">
+                <div class="cartoon-earth">
+                    <div class="earth-pin-big"></div>
+                    <div class="earth-sphere">
+                        <div class="earth-land land-1"></div>
+                        <div class="earth-land land-2"></div>
+                        <div class="earth-land land-3"></div>
+                        <div class="earth-face">
+                            <div class="earth-eye left"></div>
+                            <div class="earth-eye right"></div>
+                            <div class="earth-smile"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3>¡Todo el mundo nos visita!</h3>
+                <button class="btn-earth-reveal">ENCONTRAR SEDE</button>
+            </div>
+            <div id="google-map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d15865.23933936665!2d-75.58916!3d6.21!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x8e4428357f830389%3A0x6b3b5190982701f0!2sAeropuerto%20Olaya%20Herrera!3m2!1d6.2198!2d-75.5878!4m5!1s0x8e4428dfb80fad05%3A0x42137cfcc7b53b56!2sParque%20Lleras%2C%20Medell%C3%ADn!3m2!1d6.2089!2d-75.5678!5e0!3m2!1ses!2sco!4v1715780000000!5m2!1ses!2sco" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fullscreen Image Viewer Modal -->
+    <div id="imageViewerModal" class="modal" onclick="closeImageViewer()" style="z-index: 3000;">
+        <span class="close-modal" style="color: white; right: 30px; top: 30px; font-size: 3rem;">&times;</span>
+        <img id="fullImage" src="" style="width: 90vw; height: 90vh; border-radius: 10px; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);">
+    </div>
+
+    <footer>
+        <div style="margin-bottom: 2rem;">
+            <img src="img/logo.png" alt="Horizonte Colombiano Logo" style="height: 200px; width: auto; margin-bottom: 1rem;">
+        </div>
+        <div class="social" style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+            <a href="https://instagram.com/HorizonteColombiano_" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m4.4 3a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m5-2.5a1.2 1.2 0 0 1 1.2 1.2 1.2 1.2 0 1 1-1.2-1.2z"/></svg>
+                @HorizonteColombiano_
+            </a>
+            <a href="https://facebook.com/HorizonteColombianoOficial" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54v-2.9h2.54v-2.21c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg>
+                facebook.com/HorizonteColombianoOficial
+            </a>
+            <a href="https://wa.me/573005293916" target="_blank" style="color: var(--primary-blue); text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; transition: var(--transition);">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.437 2.503 1.163 3.487l-.742 2.708 2.769-.726c.944.505 2.017.796 3.158.797l.002.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.585-5.766-5.767-5.766h-.003zm3.565 8.371c-.154.434-.891.79-1.254.846-.351.056-.71.069-1.188-.09-.312-.104-.611-.227-.852-.351-.83-.418-1.558-1.146-1.976-1.976-.124-.241-.247-.54-.351-.852-.159-.478-.146-.837-.09-1.188.056-.363.412-1.1.846-1.254.103-.037.202-.056.303-.056.101 0 .201.019.298.056.241.092.742.66.852.852.124.215.159.434.021.644-.069.103-.138.207-.207.312-.104.154-.207.312-.104.54.207.418.524.735.942.942.228.103.386.04.54-.104.105-.104.207-.207.312-.207.21-.138.43-.103.644.021.192.11.76.611.852.852.037.097.056.197.056.298 0 .101-.019.201-.056.303zM12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.19 1.94 5.86L2.43 22l4.3-1.13C8.21 21.65 10.04 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.72 0-3.33-.47-4.72-1.29l-.34-.2-.24.06-2.54.67.67-2.45.06-.24-.2-.34C3.87 15.33 3.4 13.72 3.4 12 3.4 7.26 7.26 3.4 12 3.4s8.6 3.86 8.6 8.6-3.86 8.6-8.6 8.6z"/></svg>
+                300 529 3916
+            </a>
+        </div>
+        <p style="margin-bottom: 1.5rem; color: var(--electric-blue); font-weight: 600; font-size: 0.9rem;">📍 Medellín, Colombia | Cra 36 #10-45, El Poblado</p>
+        <a href="Archibo/HorizonteColombiano.pdf" target="_blank" class="btn-presentation">PRESENTACIÓN</a>
+        <p>&copy; 2024 Horizonte Colombiano. Todos los derechos reservados. Turismo Sostenible. Diseñado por Diego Galvis.</p>
+    </footer>
+
+    <script>
+        // Header logic
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.style.padding = '1rem 8%';
+            else header.style.padding = '1.5rem 8%';
+        });
+
+        // Animations
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+
+        // Show/Hide custom options and highlights on select change
+        document.getElementById('asunto').addEventListener('change', function() {
+            updateServiceUI(this.value);
+        });
+
+        function updateServiceUI(plan) {
+            const custom = document.getElementById('custom-trip-options');
+            custom.style.display = (plan === 'Viaje Personalizado') ? 'block' : 'none';
+        }
+
+        // Selection logic
+        function selectPlan(plan) {
+            const select = document.getElementById('asunto');
+            const msg = document.getElementById('mensaje');
+            
+            select.value = plan;
+            updateServiceUI(plan);
+
+            if (plan === 'Viaje Personalizado') {
+                msg.value = "Deseo diseñar un viaje a medida con Horizonte Colombiano.";
+            } else {
+                msg.value = `Solicito cotización formal para el servicio de: ${plan}.`;
+            }
+            
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+            msg.focus();
+        }
+
+        // WhatsApp & Google Sheets
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbziYnrL0iAYhtEyxAzH6jRHhqcn_m8SmuIyQsZNdQrzrXz1wIPi9dWFLURIFH7txf2p/exec'; 
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = form.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            
+            // UI Feedback
+            btn.innerText = 'Enviando...';
+            btn.style.opacity = '0.7';
+            btn.disabled = true;
+
+            const n = document.getElementById('nombre').value;
+            const c = document.getElementById('correo').value;
+            const t = document.getElementById('telefono').value;
+            const a = document.getElementById('asunto').value;
+            const m = document.getElementById('mensaje').value;
+
+            // Obtener tipos de viaje seleccionados
+            let tipos = [];
+            document.querySelectorAll('input[name="tipo_viaje"]:checked').forEach(cb => tipos.push(cb.value));
+            const tiposStr = tipos.length > 0 ? tipos.join(', ') : 'No especificado';
+            
+            // Asignar al campo oculto para la base de datos
+            document.getElementById('detalles_hidden').value = (a === 'Viaje Personalizado') ? tiposStr : '';
+
+            // 1. Enviar a Google Sheets
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new URLSearchParams(new FormData(form)),
+                mode: 'no-cors'
+            })
+            .then(() => {
+                btn.innerText = '¡Listo!';
+                
+                // 2. Abrir WhatsApp
+                const phone = "573005293916";
+                let text = `*SOLICITUD CORPORATIVA - HORIZONTE COLOMBIANO*%0A%0A` +
+                             `*Nombre:* ${n}%0A` +
+                             `*Email:* ${c}%0A` +
+                             `*Teléfono:* ${t}%0A` +
+                             `*Servicio:* ${a}%0A`;
+                
+                if (a === 'Viaje Personalizado') {
+                    text += `*Estilo de Viaje:* ${tiposStr}%0A`;
+                }
+                
+                text += `*Mensaje:* ${m}`;
+                
+                window.location.href = `https://wa.me/${phone}?text=${text}`;
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                window.location.href = `https://wa.me/573005293916?text=Error al guardar, pero quiero información sobre: ${a}`;
+            });
+        });
+
+        // Modal Logic
+        function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (show) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+            } else {
+                modal.classList.remove('active');
+                setTimeout(() => modal.style.display = 'none', 400);
+            }
+        }
+
+        // Image Viewer Logic
+        function openImageViewer(src) {
+            const viewer = document.getElementById('imageViewerModal');
+            document.getElementById('fullImage').src = src;
+            viewer.style.display = 'flex';
+            setTimeout(() => viewer.classList.add('active'), 10);
+        }
+        function closeImageViewer() {
+            const viewer = document.getElementById('imageViewerModal');
+            viewer.classList.remove('active');
+            setTimeout(() => viewer.style.display = 'none', 400);
+        }
+
+        // Make modal images expandable
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.modal-content img').forEach(img => {
+                    if (!img.alt.includes('Logo') && img.id !== 'fullImage') {
+                        img.style.cursor = 'pointer';
+                        img.title = 'Haz clic para expandir';
+                        img.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            openImageViewer(this.src);
+                        });
+                    }
+                });
+            }, 500); // Wait for DOM
+        });
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                if (event.target.id === 'imageViewerModal') {
+                    closeImageViewer();
+                } else {
+                    toggleModal(event.target.id, false);
+                }
+            }
+        };
+
+        // Counter Animation Logic
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = Math.ceil(target / speed);
+
+                    if (count < target) {
+                        counter.innerText = count + inc;
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + (target > 1000 ? '+' : '');
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger counters when section is visible
+        const statsSection = document.querySelector('.stats');
+        const statsObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                startCounters();
+                statsObserver.unobserve(statsSection);
+            }
+        }, { threshold: 0.5 });
+        statsObserver.observe(statsSection);
+
+        // Map Logic
+        function deployMap() {
+            const container = document.getElementById('google-map-container');
+            const trigger = document.getElementById('map-trigger');
+            const wrapper = document.querySelector('.map-wrapper');
+            
+            wrapper.classList.add('active');
+            container.classList.add('active');
+            trigger.style.height = '0';
+            trigger.style.opacity = '0';
+            setTimeout(() => trigger.style.display = 'none', 800);
+        }
+
+        // Auto-select service from URL
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const servicio = urlParams.get('servicio');
+            if (servicio) {
+                selectPlan(servicio);
+            } else {
+                // Initialize UI for default selection
+                updateServiceUI(document.getElementById('asunto').value);
+            }
+        });
+    </script>
+</body>
+</html>
+
